@@ -11,7 +11,7 @@ import Navbar from './Navbar';
 
 export default function Header() {
   return (
-    <div>
+    <div  style={{height: '1000px'}}>
       <Carousel autoPlay infiniteLoop showThumbs={false} interval={5000} className="custom-carousel-header">
         <div>
             <Link to='/'>            
@@ -20,7 +20,7 @@ export default function Header() {
         </div>
         <div>
         <Link to='/'>
-            <img src={i2} alt="Image 2" className="custom-carousel-image img-fluid"  />
+            <img src={i4} alt="Image 2" className="custom-carousel-image img-fluid"  />
             </Link>
         </div>
         <div>
@@ -30,7 +30,7 @@ export default function Header() {
         </div>
         <div>
         <Link to='/'>
-            <img src={i4} alt="Image 4" className="custom-carousel-image img-fluid" />
+            <img src={i2} alt="Image 4" className="custom-carousel-image img-fluid" />
         </Link>
         </div>
       </Carousel>
