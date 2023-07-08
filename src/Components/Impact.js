@@ -40,8 +40,8 @@ function ImpactCounter({ targetValue }) {
           <h1 className='d-flex justify-content-center align-items-center text-white reach-text' data-aos='fade-up'>Our Reach</h1>
         </div>
         <div className='col right-side-reach'>
-          <h2 className='reach-value d-flex justify-content-center align-items-center text-white' data-aos='fade-up'data-aos-delay='3000'>{currentValue}+</h2>
-          <h1 className='text-white font-weight-bolder impacts-text'data-aos='fade-up'data-aos-delay='2500'>Impacts we have made!</h1>
+          <h2 className='reach-value d-flex justify-content-center align-items-center text-white' data-aos='fade-up'data-aos-delay='3000'>{21000}+</h2>
+          <h1 className='text-white font-weight-bolder impacts-text'data-aos='fade-up'data-aos-delay='2500'>Videos we have on our platform!</h1>
         </div>
       </div>
     </animated.div>
