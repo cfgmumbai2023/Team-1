@@ -12,7 +12,7 @@ import ImpactCounter from '../Components/Impact';
 export default function Home() {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <Header />
       <Volunteer />
       <Areas />
