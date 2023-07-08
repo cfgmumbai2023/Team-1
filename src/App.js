@@ -13,7 +13,8 @@ import Home from './Screens/Home';
 import Donate from './Screens/Donate';
 import VideoUpload from './Components/VideoUpload';
 import Navbar from './Components/Navbar';
-
+import Login from './Screens/Login';
+import { Video } from './Screens/Video';
 function App() {
 
   useEffect(() => {
@@ -28,6 +29,8 @@ function App() {
         <Route exact path='/' element={<Home />} />
         <Route exact path='/upload' element={<VideoUpload />} />
         <Route exact path='/donate' element={<Donate />} />
+        <Route exact path='/login' element={<Login />} />
+        <Route exact path='/video-list' element={<Video />} />
       </Routes>
     </Router>
     </>

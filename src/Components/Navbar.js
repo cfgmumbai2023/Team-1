@@ -41,16 +41,12 @@ export default function Navbar() {
           >
             <ul className="navbar-nav d-end ml-auto">
             <Link to="/" className="text-black navbar-btn btn-lg">Home</Link>
-              <li className="text-black navbar-btn btn-lg">
+              <Link to="/video-list" className="text-black navbar-btn btn-lg">
                 Educational Videos
-              </li>
+              </Link>
               <Link to="/upload" className="text-black navbar-btn btn-lg">Upload Video</Link>
-<<<<<<< Updated upstream
-              <li className="text-black navbar-btn btn-lg">Login</li>
-=======
               <Link to='/login' className="text-black navbar-btn btn-lg">Login</Link>
 
->>>>>>> Stashed changes
             </ul>
           </div>
         </div>
