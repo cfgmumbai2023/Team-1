@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask import Flask, request, jsonify
 import psycopg2
 
@@ -276,4 +275,3 @@ def update_video_upvote(email):
 
 if __name__ == "__main__":
     app.run(debug=True)
->>>>>>> origin/backend
