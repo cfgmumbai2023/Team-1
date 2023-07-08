@@ -23,6 +23,12 @@ def index():
     print('yes')
     return jsonify(message='User added successfully'), 200
 
+# Hash and store the password
+def hash_password(user_password):
+    salt = bcrypt.gensalt()
+    hashed_password = bcrypt.hashpw(user_password.encode('utf-8'), salt)
+    return hashed_password
+
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
@@ -32,7 +38,7 @@ def add_user():
     last_name = data['last_name']
     udise_no = data['udise_no']
     user_email = data['user_email']
-    user_password = data['user_password']
+    user_password = hash_password(data['user_password'])
     result = get_info(user_email, user_password)
     message = 'Already Exist'
     if not result:
@@ -44,12 +50,6 @@ def add_user():
     close_connection(conn, cur)
     return jsonify(message=message, id=user_email), 200
 
-
-# Hash and store the password
-def hash_password(user_password):
-    salt = bcrypt.gensalt()
-    hashed_password = bcrypt.hashpw(user_password.encode('utf-8'), salt)
-    return hashed_password
 
 # Verify the password
 def verify_password(hashed_password, user_password):
