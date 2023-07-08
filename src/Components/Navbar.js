@@ -45,7 +45,12 @@ export default function Navbar() {
                 Educational Videos
               </li>
               <Link to="/upload" className="text-black navbar-btn btn-lg">Upload Video</Link>
+<<<<<<< Updated upstream
               <li className="text-black navbar-btn btn-lg">Login</li>
+=======
+              <Link to='/login' className="text-black navbar-btn btn-lg">Login</Link>
+
+>>>>>>> Stashed changes
             </ul>
           </div>
         </div>
