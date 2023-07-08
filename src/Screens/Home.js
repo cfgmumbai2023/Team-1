@@ -14,7 +14,6 @@ export default function Home() {
     <div>
       <Navbar />
       <Header />
-      <FrontPage />
       <Volunteer />
       <Areas />
       <ImpactCounter targetValue={10000} />
