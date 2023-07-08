@@ -3,42 +3,8 @@ import { Link } from 'react-router-dom';
 import image from '../Components/Assets/jeet.jpg';
 import { Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
-
-  const [credentials, setcredentials] = useState({email:"", password:""});
-  let navigate= useNavigate();
-
-  const handleSubmit =async(e)=>{
-      e.preventDefault();
-      console.log(JSON.stringify({email:credentials.email, password:credentials.password}))
-      const response = await fetch("http://localhost:5000/user_login",{
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body:JSON.stringify({email:credentials.email, password:credentials.password})
-      });
-      const json = await response.json()
-      console.log(json);
-
-      if(json.success)
-      {
-          alert("Enter Valid Credentials");
-      }
-      if(!json.success)
-      {
-        localStorage.setItem("user_email", credentials.email);
-        localStorage.setItem("authToken",json.authToken);
-        console.log(localStorage.getItem("authToken", json.authToken));
-        navigate("/");
-      }
-  }
-
-  const onChange = (event) =>{
-      setcredentials({...credentials, [event.target.name]:event.target.value})
-  }
   const [selectedRole, setSelectedRole] = useState('User');
 
   const handleRoleChange = (role) => {
@@ -59,13 +25,11 @@ export default function Login() {
               />
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-              <form style={{ minWidth: '50vh' }} onSubmit={handleSubmit}>
+              <form style={{ minWidth: '50vh' }}>
                 <div class="form-outline mb-4">
                   <input
                     type="email"
                     id="form3Example3"
-                    value={credentials.email}
-                    onChange={onChange}
                     class="form-control form-control-lg"
                     placeholder="Enter a valid email address"
                     name="email"
@@ -75,7 +39,22 @@ export default function Login() {
                   </label>
                 </div>
 
-                <Dropdown>
+                
+
+                <div class="form-outline mb-3">
+                  <input
+                    type="password"
+                    id="form3Example4"
+                    class="form-control form-control-lg"
+                    placeholder="Enter password"
+                    name="password"
+                  />
+                  <label class="form-label" for="form3Example4">
+                    Password
+                  </label>
+                </div>
+
+                <Dropdown >
                   <Dropdown.Toggle variant="none" id="dropdown-media">
                     {selectedRole}
                   </Dropdown.Toggle>
@@ -91,21 +70,6 @@ export default function Login() {
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
-
-                <div class="form-outline mb-3">
-                  <input
-                    type="password"
-                    id="form3Example4"
-                    value={credentials.password}
-                    onChange={onChange}
-                    class="form-control form-control-lg"
-                    placeholder="Enter password"
-                    name="password"
-                  />
-                  <label class="form-label" for="form3Example4">
-                    Password
-                  </label>
-                </div>
 
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="form-check mb-0">

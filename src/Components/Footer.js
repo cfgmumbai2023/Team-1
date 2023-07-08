@@ -15,16 +15,8 @@ export default function Footer() {
 
   <footer className="text-center text-white" style={{backgroundColor: "#000000"}}>
 
-    <div className="container">
+    <div>
 
-      <section className="mt-5">
-        
-      </section>
-     
-
-      <hr className="my-3" />
-
-      
       <section className="mb-3">
         <div className="row d-flex justify-content-center">
           <div className="col-6 mt-5 justify-content-center align-items-center">
@@ -44,8 +36,6 @@ export default function Footer() {
         </div>
       </section>
       
-
-
       <section className="text-center mb-5">
         <Link to="" className="text-white me-4">
           <img src={fb} />
