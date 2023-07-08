@@ -1,0 +1,371 @@
+/* header.masthead {
+    padding-top: 10rem;
+    padding-bottom: calc(8rem - 4.5rem);
+    background: linear-gradient(to top, rgba(38, 2, 243, 0.747) 100%, rgba(173, 184, 19, 0.8) 0%), url(../Components/Assets/smile.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+*/
+
+header.masthead{
+    padding-left: 20pt;
+    padding-top: 30pt !important;
+    padding-bottom: 30pt;
+    padding-left: 0pt;
+    background-color: #010d75;
+}
+
+.bapu{
+    max-height: 300pt;
+    min-width: 250pt;
+}
+
+.donate{
+    font-size: 26pt;
+    margin-left: 30%;
+    text-decoration: none;
+    padding: 10pt;
+    background-color:#000c50;
+}
+
+.donate:hover{
+    background-color: #087e04;
+}
+
+.gandhi{
+    color: #f8030b;
+    font-weight: 600;
+    font-size: 16pt;
+}
+
+.quote{
+    padding-left: 20%;
+    font-weight: 600;
+    font-size: 22pt;
+    color: #fff;
+}
+
+.donate-btn:hover{
+    background-color: rgb(1, 78, 1) !important;
+  }
+
+
+.navbar-btn:hover{
+    color: rgb(255, 166, 0) !important;
+}
+
+.donate-btn{
+    margin-top: 10pt !important;
+    margin-bottom: 180pt !important;
+    padding-left: 10pt !important;
+    padding-right: 10pt !important;
+    font-size: 20pt !important;
+    font-weight: bolder !important ;
+}
+
+.navbar-toggler{
+    color: black !important;
+}
+
+.navbar{
+    background-color:  rgba(245, 246, 250, 0.8)  !important;
+}
+
+.be-change{
+    font-weight: bolder;
+    font-size: 40pt;
+    margin-top: -20pt !important;
+}
+
+
+.call-to-action {
+    position: relative;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background: linear-gradient(to bottom, rgba(14, 14, 14, 0.8) 0%, rgba(63, 63, 63, 0.8) 100%), url(../Components/Assets/1st.webp);
+    color: #fdfcfc;
+    text-align: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center 21px;
+    display: block;
+}
+  
+.auto-container {
+    position: static;
+    max-width: 1200px;
+    padding: 0px 15px;
+    margin: 0 auto;
+}
+
+.sec-title.centered {
+    text-align: center;
+}
+.sec-title.centered .desc-text {
+    /* max-width: 860px; */
+    font-weight: 500;
+    margin: 0 auto;
+    max-width: 100%;
+}
+.sec-title .desc-text {
+    position: relative;
+    line-height: 1.8em;
+    padding-top: 4px;
+}
+
+.theme-btn {
+    display: inline-block;
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+.btn-style-two {
+    position: relative;
+    padding: 9px 40px;
+    line-height: 24px;
+    text-transform: uppercase;
+    background: #da2128;
+    color: #ffffff !important;
+    border: 2px solid #da2128;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 2px;
+}
+
+.btn-style-one:hover{
+    background-color: yellowgreen;
+}
+
+.btn-style-two:hover{
+    background-color: rgb(112, 0, 0);
+}
+
+.theme-btn {
+    display: inline-block;
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    transition-property: all;
+}
+
+.btn-style-one {
+    position: relative;
+    padding: 9px 40px;
+    line-height: 24px;
+    text-transform: uppercase;
+    background: none;
+    color: #fffcfc !important;
+    border: 4px solid #087e04;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 2px;
+}
+
+
+.custom-carousel .slide img {
+    margin-top: 30pt;
+    object-fit: cover;
+    height: 150pt !important;
+    width: 150pt !important;
+    border-radius: 100%;
+}
+
+.custom-carousel .slide h5 {
+    text-align: center;
+    color: black;
+    margin: 20px 0;
+    padding-right: 100pt;
+    padding-left: 100pt;
+    padding-top: 20pt;
+}
+
+.custom-carousel .slide h6{
+    color: blue;
+    margin-bottom: 30pt;
+}
+
+.custom-carousel .slide h3{
+    color: orange;
+}
+
+.text-uppercase{
+    color: white !important;
+}
+
+.text-uppercase:hover{
+    color: rgb(255, 166, 0) !important;
+}
+
+
+
+
+.block-wrapper {
+    border: 2px solid rgb(247, 232, 232);
+  }
+
+.blocks{
+    color: black;
+    padding: 2pt;
+    font-size: 15pt;
+    margin: 5pt;
+}
+
+
+.custom-carousel2 .slide img{
+    object-fit: contain;
+}
+
+.block{
+    max-width: 40% !important;
+    align-items: center;
+    justify-content: center;    
+    padding: 10pt;
+    margin-left: 30% !important;
+    margin: 70pt;
+}
+
+.custom-carousel2 .slide h1{
+    color: #2538a3 !important;
+    font-weight: bolder;
+}
+
+.custom-carousel2 .slide hr{
+    color: rgb(104, 1, 1);
+    min-height: 2pt;
+    z-index: 10;
+}
+
+.donatebtn{ 
+    background-color: rgb(26, 146, 2) !important;
+    padding-left: 20pt !important;
+    padding-right: 20pt !important;
+    padding-top: 3pt !important;
+    padding-bottom: 3pt !important;
+    margin: 20pt;
+    font-size: 20pt !important;
+    font-weight: bolder !important;
+}
+
+.custom-carousel2 .slide label{
+    font-weight: 600;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 18pt;
+    color: black;
+}
+
+.newinput{
+    background-color: rgb(241, 243, 243);
+}
+
+.block2{
+    background-color: rgb(255, 255, 255);
+    max-width: 40% !important;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50pt;        
+}
+.info{  
+    background-color: #39487f !important;
+    color: rgb(255, 255, 255);
+    max-width: 40% !important;
+    margin-top: 70pt;
+    align-items: center;
+    justify-content: center;    
+    padding-bottom: 10pt;
+    font-size: larger;
+    font-weight: bolder;
+    padding-top: 10pt;
+}
+
+.ssfimage{
+    max-width: 40% !important;
+    max-height: 150pt;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10pt;
+    margin-top:50pt;
+    padding-bottom: -40pt !important;
+}
+
+.nextbtn{
+    color: aliceblue;
+    background-color: #2538a3 !important;
+    padding-left: 40pt !important;
+    padding-right: 40pt !important;
+    margin-bottom: 30pt;
+}
+
+.newhr{
+    color: black;   
+}
+
+.forms{
+    margin-bottom: 100pt;
+}
+
+.custom-carousel2 input{
+    color: black !important ;
+}
+
+.donate-header{
+    background-image: url("../Components/Assets/Untitled.jpeg") !important;
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 1303px !important;
+    padding: 0;
+    margin: 0;
+}
+
+.donate-word{
+    color: #fff;
+    font-size: 50pt;
+    padding: 8%;
+    font-weight: bolder;
+}
+
+.our-reach{
+    background: linear-gradient(to top, rgba(5, 0, 31, 0.747) 100%, rgba(41, 41, 40, 0.8) 0%), url(../Components/Assets/reach.jpg);
+        background-repeat: no-repeat;
+    background-size: 100%;
+    max-height: 350pt;
+    margin-bottom: 50pt;
+}
+
+.reach-text{
+    margin-top: 28% !important;
+    font-size: 42pt;        
+    font-weight: bolder;
+    margin-bottom: 0pt !important;
+}
+
+.reach-value{
+    background-color: #000c50;
+    min-height: 100pt;
+    max-width: 100pt;
+    border-radius: 50%;
+    margin-left: 40%;
+    margin-top: 20%;
+}
+
+.reach-value:hover{
+    background-color: chocolate;
+}
+
+.impacts-text{
+    margin-left: 18%;
+}
+
+.right-side-reach{
+    background: linear-gradient(to top, rgba(1, 75, 34, 0.747) 100%, rgba(41, 41, 40, 0.8) 0%), url(../Components/Assets/reach.jpg);
+    min-height: 350pt;
+}
+
