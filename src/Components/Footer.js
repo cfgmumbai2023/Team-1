@@ -71,7 +71,7 @@ export default function Footer() {
         <div className="row d-flex justify-content-center">
           <div className="col-6 mt-5 justify-content-center align-items-center">
             <h5 className='mb-3'>
-              Smile Foundation
+              JEET KI AOR
             </h5>
             <p>
             161 B/4, 3rd Floor, Gulmohar House, Yusuf Sarai Community Centre New Delhi - 110049 Delhi, India
