@@ -7,70 +7,32 @@ import { Dropdown } from 'bootstrap/dist/js/bootstrap.bundle';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 
 export default function Signup() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    UDISE: '',
-  });
+    const [credentials, setcredentials] = useState({firstname:"",lastname:"", email:"", password:"", UDISE:""});
 
-  const [errors, setErrors] = useState({
-    email: '',
-    password: '',
-  });
 
-  const validateEmail = (value) => {
-    // Regular expression for email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(value)) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        email: 'Please enter a valid email address.',
-      }));
-    } else {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        email: '',
-      }));
+    const handleSubmit =async(e)=>{
+        e.preventDefault();
+        console.log(JSON.stringify({firstname:credentials.firstname, lastname:credentials.lastname, email:credentials.email, password:credentials.password, UDISE:credentials.UDISE}))
+        const response = await fetch("http://localhost:5000/add_user",{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({firstname:credentials.firstname, lastname:credentials.lastname, email:credentials.email, password:credentials.password, UDISE:credentials.UDISE})
+        });
+        const json = await response.json()
+        console.log(json);
+           console.log(json.success);
+        if(!json.success)
+        {
+            alert("Enter Valid Credentials");
+        }
     }
-  };
 
-  const validatePassword = (value) => {
-    // Regular expression for password validation
-    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{5,}$/;
-    if (!passwordRegex.test(value)) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        password:
-          'Password must contain at least 5 characters, including an uppercase letter, a lowercase letter, and a number.',
-      }));
-    } else {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        password: '',
-      }));
+    const handleChange = (event) =>{
+        setcredentials({...credentials, [event.target.name]:event.target.value})
     }
-  };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-
-    // Validate email and password on change
-    if (name === 'email') {
-      validateEmail(value);
-    } else if (name === 'password') {
-      validatePassword(value);
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Perform form submission or further actions here
-  };
 
   return (
     <Carousel showThumbs={false} className="custom-carousel">
@@ -101,8 +63,8 @@ export default function Signup() {
                       type="text"
                       id="form3Example1c"
                       className="form-control"
-                      name='name'
-                      value={formData.name}
+                      name='firstname'
+                      value={credentials.firstname}
                       onChange={handleChange}
                     />
                     <label className="form-label" htmlFor="form3Example1c">
@@ -118,8 +80,8 @@ export default function Signup() {
                       type="text"
                       id="form3Example1c"
                       className="form-control"
-                      name='name'
-                      value={formData.name}
+                      name='lastname'
+                      value={credentials.lastname}
                       onChange={handleChange}
                     />
                     <label className="form-label" htmlFor="form3Example1c">
@@ -136,13 +98,12 @@ export default function Signup() {
                       id="form3Example3c"
                       className="form-control"
                       name="email"
-                      value={formData.email}
+                      value={credentials.email}
                       onChange={handleChange}
                     />
                     <label className="form-label" htmlFor="form3Example3c">
                       Your Email
                     </label>
-                    {errors.email && <div className="text-danger">{errors.email}</div>}
                   </div>
                 </div>
 
@@ -150,21 +111,8 @@ export default function Signup() {
                   <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                   <div className="form-outline flex-fill mb-0">
   
-  <div>
-    <input
-      type="checkbox"
-      id="contentCheckbox"
-      className="form-check-input"
-      name="role"
-      value="content creator"
-      checked={formData.role === 'content'}
-      onChange={handleChange}
-    />
-    <label className="form-check-label" htmlFor="contentCheckbox">
-      Content Creator
-    </label>
-  </div>
-  {errors.role && <div className="text-danger">{errors.role}</div>}
+
+
 </div>
 
                 </div>
@@ -179,13 +127,12 @@ export default function Signup() {
                       id="form3Example4c"
                       className="form-control"
                       name="password"
-                      value={formData.password}
+                      value={credentials.password}
                       onChange={handleChange}
                     />
                     <label className="form-label" htmlFor="form3Example4c">
                       Password
                     </label>
-                    {errors.password && <div className="text-danger">{errors.password}</div>}
                   </div>
                 </div>
 
@@ -197,8 +144,8 @@ export default function Signup() {
                       id="form3Example1c"
                       className="form-control"
                       placeholder='                     Only if you are a student'
-                      name='name'
-                      value={formData.UDISE}
+                      name='UDISE'
+                      value={credentials.UDISE}
                       onChange={handleChange}
                     />
                     <label className="form-label" htmlFor="form3Example1c">
