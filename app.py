@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import psycopg2
+import bcrypt
 
 app = Flask(__name__)
 
@@ -22,6 +23,12 @@ def index():
     print('yes')
     return jsonify(message='User added successfully'), 200
 
+# Hash and store the password
+def hash_password(user_password):
+    salt = bcrypt.gensalt()
+    hashed_password = bcrypt.hashpw(user_password.encode('utf-8'), salt)
+    return hashed_password
+
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
@@ -31,7 +38,7 @@ def add_user():
     last_name = data['last_name']
     udise_no = data['udise_no']
     user_email = data['user_email']
-    user_password = data['user_password']
+    user_password = hash_password(data['user_password'])
     result = get_info(user_email, user_password)
     message = 'Already Exist'
     if not result:
@@ -44,16 +51,34 @@ def add_user():
     return jsonify(message=message, id=user_email), 200
 
 
+# Verify the password
+def verify_password(hashed_password, user_password):
+    return bcrypt.checkpw(user_password.encode('utf-8'), hashed_password)
+
 @app.route('/user_login', methods=['POST'])
 def check():
     data = request.get_json()
     user_email = data['user_email']
     user_password = data['user_password']
+    hashed_password = hash_password(user_password)
+    if verify_password(hashed_password, user_password):
+     print("Login successful!")
+    else:
+     print("Login failed!")
     result = get_info(user_email, user_password)
     message = 'Does Not exist'
     if result:
         message = 'Login Successful'
     return jsonify(message=message, id=user_email), 200
+
+
+def get_info(email, password):
+    (conn, cur) = establish_connection()
+    cur.execute("SELECT * FROM jeet.users where user_email=%s and user_password=%s", (email, password))
+    result = cur.fetchall()
+    conn.commit()
+    close_connection(conn, cur)
+    return result
 
 
 def get_info(email, password):
