@@ -15,7 +15,7 @@ export default function Header() {
       <Carousel autoPlay infiniteLoop showThumbs={false} interval={5000} className="custom-carousel-header">
         <div>
             <Link to='/'>            
-            <img src={i1} alt="Image 1" className="custom-carousel-image img-fluid" />
+            <img src={i3} alt="Image 1" className="custom-carousel-image img-fluid" />
             </Link>
         </div>
         <div>
@@ -25,7 +25,7 @@ export default function Header() {
         </div>
         <div>
         <Link to='/'>
-            <img src={i3} alt="Image 3" className="custom-carousel-image img-fluid" />
+            <img src={i1} alt="Image 3" className="custom-carousel-image img-fluid" />
         </Link>
         </div>
         <div>

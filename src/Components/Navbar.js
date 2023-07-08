@@ -19,7 +19,7 @@ export default function Navbar() {
           <img
             src={smilelogo}
             className="smilelogo img-fluid mx-5"
-            style={{ width: "100px" }}
+            style={{ width: "50px" }}
           />
         </Link>
         <button
