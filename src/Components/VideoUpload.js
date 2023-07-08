@@ -36,9 +36,10 @@ const VideoUpload = () => {
     return (
         <div className="container">
       <Form className="form-container" onSubmit={handleSubmit}>
-        <Form.Group controlId="videoName">
+        <Form.Group className="slot" controlId="videoName">
           <Form.Label>Video Name</Form.Label>
           <Form.Control
+            required
             type="text"
             placeholder="Enter video name"
             value={videoName}
@@ -46,37 +47,38 @@ const VideoUpload = () => {
           />
         </Form.Group>
   
-        <Form.Group controlId="videoURL">
+        <Form.Group className="slot" controlId="videoURL">
           <Form.Label>Video URL</Form.Label>
           <Form.Control
-            type="text"
+            required
+            type="url"
             placeholder="Enter video URL"
             value={videoURL}
             onChange={(e) => setVideoURL(e.target.value)}
           />
         </Form.Group>
   
-        <Form.Group controlId="pptLink">
+        <Form.Group className="slot" controlId="pptLink">
           <Form.Label>PPT Link</Form.Label>
           <Form.Control
-            type="text"
+            type="url"
             placeholder="Enter PPT link"
             value={pptLink}
             onChange={(e) => setPPTLink(e.target.value)}
           />
         </Form.Group>
   
-        <Form.Group controlId="workbookLink">
+        <Form.Group className="slot" controlId="workbookLink">
           <Form.Label>Workbook Link</Form.Label>
           <Form.Control
-            type="text"
+            type="url"
             placeholder="Enter workbook link"
             value={workbookLink}
             onChange={(e) => setWorkbookLink(e.target.value)}
           />
         </Form.Group>
 
-        <Form.Group controlId="classSelect">
+        <Form.Group  className="slot" controlId="classSelect">
         <Form.Label>Class</Form.Label>
         <Form.Select
           value={selectedClass}
@@ -91,12 +93,12 @@ const VideoUpload = () => {
         </Form.Select>
       </Form.Group>
 
-      <Form.Group controlId="tagsInput">
+      <Form.Group className="slot" controlId="tagsInput">
         <Form.Label>Tags</Form.Label>
         <TagsInput value={tags} onChange={(newTags) => setTags(newTags)} />
       </Form.Group>
   
-        <Button variant="primary" type="submit">
+        <Button className="btncss" variant="primary" type="submit">
           Submit
         </Button>
       </Form>
