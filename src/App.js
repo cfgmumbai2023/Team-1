@@ -14,6 +14,7 @@ import Donate from './Screens/Donate';
 import VideoUpload from './Components/VideoUpload';
 import Navbar from './Components/Navbar';
 import Login from './Screens/Login';
+import Signup from './Screens/Signup';
 import { Video } from './Screens/Video';
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
         <Route exact path='/upload' element={<VideoUpload />} />
         <Route exact path='/donate' element={<Donate />} />
         <Route exact path='/login' element={<Login />} />
+        <Route exact path='/createuser' element={<Signup/>} />
         <Route exact path='/video-list' element={<Video />} />
       </Routes>
     </Router>

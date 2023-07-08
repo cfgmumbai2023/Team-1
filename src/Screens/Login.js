@@ -39,7 +39,22 @@ export default function Login() {
                   </label>
                 </div>
 
-                <Dropdown>
+                
+
+                <div class="form-outline mb-3">
+                  <input
+                    type="password"
+                    id="form3Example4"
+                    class="form-control form-control-lg"
+                    placeholder="Enter password"
+                    name="password"
+                  />
+                  <label class="form-label" for="form3Example4">
+                    Password
+                  </label>
+                </div>
+
+                <Dropdown >
                   <Dropdown.Toggle variant="none" id="dropdown-media">
                     {selectedRole}
                   </Dropdown.Toggle>
@@ -55,19 +70,6 @@ export default function Login() {
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
-
-                <div class="form-outline mb-3">
-                  <input
-                    type="password"
-                    id="form3Example4"
-                    class="form-control form-control-lg"
-                    placeholder="Enter password"
-                    name="password"
-                  />
-                  <label class="form-label" for="form3Example4">
-                    Password
-                  </label>
-                </div>
 
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="form-check mb-0">

@@ -78,9 +78,9 @@ export default function Signup() {
 
       <div>
         {/* ...second carousel slide... */}
-        <div className='container-fluid d-flex justify-content-center align-items-center p-5 fs-5 font-weight-bold'>
+        {/* <div className='container-fluid d-flex justify-content-center align-items-center p-5 fs-5 font-weight-bold'>
           FOR CONTENT CREATORS
-        </div>
+        </div> */}
         <div className='container-fluid'>
           <section className="text-black">
             <div className="container h-80">
@@ -234,7 +234,7 @@ export default function Signup() {
       </div>
     </div>
   </div>
-  <div
+  {/* <div
     class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
    
 
@@ -243,7 +243,7 @@ export default function Signup() {
       Copyright © 2020. All rights reserved.
     </div>
     
-  </div>
+  </div> */}
 </section>
 
     </div>
