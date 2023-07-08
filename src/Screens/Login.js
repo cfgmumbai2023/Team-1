@@ -26,34 +26,8 @@ export default function Login() {
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <form style={{ minWidth: '50vh' }}>
-                <div class="form-outline mb-4">
-                  <input
-                    type="email"
-                    id="form3Example3"
-                    class="form-control form-control-lg"
-                    placeholder="Enter a valid email address"
-                    name="email"
-                  />
-                  <label class="form-label" for="form3Example3">
-                    Email address
-                  </label>
-                </div>
 
-                
-
-                <div class="form-outline mb-3">
-                  <input
-                    type="password"
-                    id="form3Example4"
-                    class="form-control form-control-lg"
-                    placeholder="Enter password"
-                    name="password"
-                  />
-                  <label class="form-label" for="form3Example4">
-                    Password
-                  </label>
-                </div>
-
+              <div>
                 <Dropdown >
                   <Dropdown.Toggle variant="none" id="dropdown-media">
                     {selectedRole}
@@ -70,6 +44,36 @@ export default function Login() {
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
+                </div><br/>
+
+                <div class="form-outline mb-3">
+                  <input
+                    type="email"
+                    id="form3Example3"
+                    class="form-control form-control-lg"
+                    placeholder="Enter a valid email address"
+                    name="email"
+                  />
+                  <label class="form-label" for="form3Example3">
+                    Email address
+                  </label>
+                </div>
+
+                
+                <div class="form-outline mb-3">
+                  <input
+                    type="password"
+                    id="form3Example4"
+                    class="form-control form-control-lg"
+                    placeholder="Enter password"
+                    name="password"
+                  />
+                  <label class="form-label" for="form3Example4">
+                    Password
+                  </label>
+                </div>
+
+                
 
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="form-check mb-0">
@@ -107,11 +111,7 @@ export default function Login() {
             </div>
           </div>
         </div>
-        <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-          <div class="text-black mb-3 mb-md-0 bottom-fixed">
-            Copyright © 2020. All rights reserved.
-          </div>
-        </div>
+        
       </section>
     </div>
   );

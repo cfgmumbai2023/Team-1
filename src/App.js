@@ -13,9 +13,11 @@ import Home from './Screens/Home';
 import Donate from './Screens/Donate';
 import VideoUpload from './Components/VideoUpload';
 import Navbar from './Components/Navbar';
+import Footer from './Components/Footer';
 import Login from './Screens/Login';
 import Signup from './Screens/Signup';
 import { Video } from './Screens/Video';
+import VideoViewer from './Components/VideoViewer';
 function App() {
 
   useEffect(() => {
@@ -33,7 +35,9 @@ function App() {
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/createuser' element={<Signup/>} />
         <Route exact path='/video-list' element={<Video />} />
+        <Route exact path='/video-viewer' element={<VideoViewer />} />
       </Routes>
+    <Footer />
     </Router>
     </>
   );
