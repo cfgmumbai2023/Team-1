@@ -11,6 +11,8 @@ import 'aos/dist/aos.css';
 
 import Home from './Screens/Home';
 import Donate from './Screens/Donate';
+import VideoUpload from './Components/VideoUpload';
+import Navbar from './Components/Navbar';
 
 function App() {
 
@@ -19,12 +21,16 @@ function App() {
   }, [])
 
   return (
+    <>
     <Router>
+    <Navbar />
       <Routes>
         <Route exact path='/' element={<Home />} />
+        <Route exact path='/upload' element={<VideoUpload />} />
         <Route exact path='/donate' element={<Donate />} />
       </Routes>
     </Router>
+    </>
   );
 }
 

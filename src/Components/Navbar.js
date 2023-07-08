@@ -44,6 +44,7 @@ export default function Navbar() {
               <li className="text-black navbar-btn btn-lg">
                 Educational Videos
               </li>
+              <Link to="/upload" className="text-black navbar-btn btn-lg">Upload Video</Link>
               <li className="text-black navbar-btn btn-lg">Login</li>
             </ul>
           </div>
