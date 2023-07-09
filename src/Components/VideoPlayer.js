@@ -1,5 +1,6 @@
 import React , {useState}from 'react';
 import ReactPlayer from "react-player";
+import { Link, useNavigate } from "react-router-dom";
  
 function VideoPlayer() {
   const [search, setSearch] = useState("");
@@ -13,7 +14,7 @@ function VideoPlayer() {
     url="https://www.youtube.com/watch?v=pqnhlrlrfmw"
   />
   <div style={{padding:"5%"}}>
-  <button class="btn btn-dark" type="submit" style={{margin:"20px"}}>Title of the video</button>
+  <Link to="/video-viewer"  class="btn btn-dark" type="submit" style={{margin:"20px"}}>Title of the video</Link>
   <div>
   <input class="btn btn-dark" type="button" style={{margin:"20px"}} value="Input"/>
 <input class="btn btn-dark" type="button" style={{margin:"20px"}} value="Input"/>
