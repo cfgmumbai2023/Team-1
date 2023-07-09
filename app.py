@@ -30,6 +30,7 @@ def index():
     print('yes')
     return jsonify(message='User added successfully'), 200
 
+
 # Hash and store the password
 def hash_password(user_password):
     hashed_password = hashlib.sha256(user_password.encode('utf-8')).hexdigest()
@@ -81,6 +82,12 @@ def add_user():
         error_message = f"Error executing SQL statement: {error}"
         return jsonify(message=error_message), 500
 
+
+# Verify the password
+def verify_password(hashed_password, user_password):
+    return bcrypt.checkpw(user_password.encode('utf-8'), hashed_password)
+
+
 @app.route('/user_login', methods=['POST'])
 def user_login():
     try:
@@ -98,6 +105,20 @@ def user_login():
         # Handle the error as per your requirement
         error_message = f"An error occurred: {error}"
         return jsonify(message=error_message), 500
+def check():
+    data = request.get_json()
+    user_email = data['email']
+    user_password = data['password']
+    hashed_password = hash_password(user_password)
+    if verify_password(hashed_password, user_password):
+        print("Login successful!")
+    else:
+        print("Login failed!")
+    result = get_info(user_email, user_password)
+    message = 'Does Not exist'
+    if result:
+        message = 'Login Successful'
+    return jsonify(message=message, id=user_email), 200
 
 
 
@@ -169,6 +190,7 @@ def return_upvotes():
     
     
 
+
 @app.route('/update_video_upvote', methods=['POST'])
 def update_video_upvote():
     (conn, cur) = establish_connection()
@@ -213,6 +235,44 @@ def get_all_users():
         return jsonify(message=error_message), 500
 
 #final changes have been made
+=======
+@app.route('/display_filters',methods=['POST'])
+def filter_search():
+    (conn, cur) = establish_connection()
+    data = request.get_json()
+    filters = data['tags']
+    query = """ SELECT * FROM jeet.videos WHERE ARRAY[%s] <@ tags """
+    cur.execute(query, (filters,))
+    result = cur.fetchall()
+    return jsonify(message=result), 200
+
+
+@app.route('/admin_login',methods=['POST'])
+def admin_login():
+    data = request.get_json()
+    first_name = data['first_name']
+    last_name = data['last_name']
+    user_email = data['user_email']
+    user_password = data['user_password']
+    result = get_info(user_email, user_password)
+    message = 'Login Failed'
+    if user_email == 'admin@jeeth.com' and user_password == 'hellopassword':
+        message = 'Login Successful'
+    return jsonify(message=message, id=user_email), 200
+
+@app.route('/admin_page',methods=['GET'])
+def admin_page():
+    (conn, cur) = establish_connection()
+    cur.execute("select * from jeet.videos where ")
+    result = cur.fetchall()
+    return jsonify(message=result), 200
+
+@app.route('/get_videos',methods=['GET'])
+def filter_search():
+    (conn, cur) = establish_connection()
+    cur.execute("select * from jeet.videos")
+    result = cur.fetchall()
+    return jsonify(message=result), 200
 
 if __name__ == "__main__":
     app.run(debug=True)
