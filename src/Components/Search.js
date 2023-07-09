@@ -5,6 +5,7 @@ import 'react-tagsinput/react-tagsinput.css';
 
 
 export default function SearchBar() {
+  const [search, setSearch] = useState("");
 
   const [tags, setTags] = useState([]);
 
@@ -31,15 +32,19 @@ export default function SearchBar() {
 
                 
               />
+              <input type="search" placeholder="Search" className="searchbar"/><button placeholder="Submit" className="px-5 btn-style-two" onSubmit={(e) => {
+                    setSearch(e.target.value);
+                    tags=tags;
+                  }}>Search</button>
             </ul>
-            <form class="d-flex" role="search">
+            {/* <form class="d-flex" role="search">
               <input
                 class="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
               />
-            </form>
+            </form> */}
           </div>
         </div>
       </nav>
