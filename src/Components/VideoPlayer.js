@@ -1,34 +1,27 @@
-import React , {useState}from 'react';
+import React, { useState, useRef, useEffect } from "react";
 import ReactPlayer from "react-player";
-import { Link, useNavigate } from "react-router-dom";
- 
-function VideoPlayer() {
-  const [search, setSearch] = useState("");
+
+export default function Card(props) {
   return (
-    
-    <div className="App" style={{paddingLeft:"250px", paddingTop: "50px", paddingBottom: "50px", backgroundColor:''}}>
-      <div style={{ display: "flex", alignItems: "center" }}>
-  <ReactPlayer
-    width="30%"
-    height="250px"
-    url="https://www.youtube.com/watch?v=pqnhlrlrfmw"
-  />
-  <div style={{padding:"5%"}}>
-  <Link to="/video-viewer"  class="btn btn-dark" type="submit" style={{margin:"20px"}}>Title of the video</Link>
-  <div>
-  <input class="btn btn-dark" type="button" style={{margin:"20px"}} value="Input"/>
-<input class="btn btn-dark" type="button" style={{margin:"20px"}} value="Input"/>
-<input class="btn btn-dark" type="submit" style={{margin:"20px"}} value="Submit"/>
-<input class="btn btn-dark" type="reset" style={{margin:"20px"}} value="Reset"></input>
-  </div>
-  </div>
-</div>
-    </div>
+    <div>
+      <div>
+        <div className="row">
+          <div className="col-md-4 mx-2 p-2">
+              <iframe      
+                style={{ width: "auto", height: "auto" }}
+                src={props.foodItem.url}
+                title="NA"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+              <div className="card-body">
+                <h5 className="card-title">{props.foodItem.name}</h5>
+                <h6 className="card-options">{props.foodItem.tags}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
   );
 }
- 
-export default VideoPlayer;
-
-
-
-
