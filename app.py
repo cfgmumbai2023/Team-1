@@ -189,14 +189,12 @@ def get_filtered_videos():
     for tag in tags:
         words.extend(tag.split())
     words.extend(filters.split())
-    query = "SELECT video_url FROM jeet.videos WHERE "
+    query = "SELECT video_name,video_url,tags FROM jeet.videos WHERE "
     query += " OR ".join(["tags::text[] @> ARRAY[%s]::text[]"] * len(words))
     cur.execute(query, tuple(words))
     result = cur.fetchall()
-    conn.commit()
-    close_connection(conn, cur)
-    video_urls = [row[0] for row in result]
-    return jsonify(video_urls=video_urls), 200
+    video_data = [{'name': row[0], 'url': row[1], 'tags': row[2]} for row in result]
+    return jsonify(video_data=video_data), 200
 
 
 @app.route('/get_all_users', methods=['GET'])
