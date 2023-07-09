@@ -7,6 +7,12 @@ export function Video(){
         <div>
             <Search />
             < VideoPlayer />
+            <hr></hr>
+            < VideoPlayer />
+            <hr></hr>
+            < VideoPlayer />
+            <hr></hr>
+            < VideoPlayer />
         </div>
     );
 }
