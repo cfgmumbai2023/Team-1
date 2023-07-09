@@ -10,11 +10,7 @@ CORS(app)
 
 def establish_connection():
     conn = psycopg2.connect(
-        host="localhost",
-        port="5432",
-        database="jeet",
-        user="postgres",
-        password="vidhan12"
+        "postgresql://postgres:password@localhost/postgres"
     )
     cur = conn.cursor()
     return conn, cur
@@ -36,11 +32,13 @@ def hash_password(user_password):
     hashed_password = hashlib.sha256(user_password.encode('utf-8')).hexdigest()
     return hashed_password
 
+
 def verify_password(hashed_password, user_password):
     # Hash the user password using SHA-256
     hashed_user_password = hashlib.sha256(user_password.encode('utf-8')).hexdigest()
     # Compare the hashed passwords
     return hashed_password == hashed_user_password
+
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
@@ -53,7 +51,7 @@ def add_user():
         user_password = hash_password(data['password'])
         result = get_info(user_email, user_password)
         print(result)
-        
+
         if len(result) != 0:
             message = 'User already exists'
         elif data['role'] == 0:
@@ -72,11 +70,11 @@ def add_user():
                 "VALUES (%s, %s, %s, %s, %s, %s)",
                 (first_name, last_name, user_email, user_password, user_role, udise_no))
             message = 'Creator added successfully'
-        
+
         conn.commit()
         close_connection(conn, cur)
         return jsonify(message=message, id=user_email), 200
-    
+
     except psycopg2.Error as error:
         # Handle the error as per your requirement
         error_message = f"Error executing SQL statement: {error}"
@@ -84,8 +82,6 @@ def add_user():
 
 
 # Verify the password
-def verify_password(hashed_password, user_password):
-    return bcrypt.checkpw(user_password.encode('utf-8'), hashed_password)
 
 
 @app.route('/user_login', methods=['POST'])
@@ -97,14 +93,16 @@ def user_login():
         hashed_password = hash_password(user_password)
         result = get_info(user_email, hashed_password)
         message = 'Does Not exist'
-        if len(result)==1:
+        if len(result) == 1:
             message = 'Login Successful'
         return jsonify(message=message, id=user_email), 200
-    
+
     except Exception as error:
         # Handle the error as per your requirement
         error_message = f"An error occurred: {error}"
         return jsonify(message=error_message), 500
+
+
 def check():
     data = request.get_json()
     user_email = data['email']
@@ -119,7 +117,6 @@ def check():
     if result:
         message = 'Login Successful'
     return jsonify(message=message, id=user_email), 200
-
 
 
 def get_info(email, password):
@@ -146,24 +143,26 @@ def add_video():
         view_counter = 0
         upvote_counter = 0
         approval = -1
-    
-        cur.execute("INSERT INTO jeet.videos (user_email, video_name, video_url, pdf_url, ppt_url, class_no, tags, view_counter, upvote_counter, approval) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",(user_email, video_name, video_url, pdf_url, ppt_url, class_no, tags, view_counter, upvote_counter, approval))
+
+        cur.execute(
+            "INSERT INTO jeet.videos (user_email, video_name, video_url, pdf_url, ppt_url, class_no, tags, view_counter, upvote_counter, approval) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+            (user_email, video_name, video_url, pdf_url, ppt_url, class_no, tags, view_counter, upvote_counter,
+             approval))
         conn.commit()
         close_connection(conn, cur)
         return jsonify(message='Content successfully added', id=user_email), 200
-    
+
     except Exception as error:
         # Handle the error as per your requirement
         error_message = f"An error occurred: {error}"
         return jsonify(message=error_message), 500
 
 
-
 @app.route('/update_video_view', methods=['POST'])
 def update_video_view():
     (conn, cur) = establish_connection()
     data = request.get_json()
-    video_url=data['videoURL']
+    video_url = data['videoURL']
     cur.execute('UPDATE jeet.videos SET view_counter = view_counter + 1 WHERE video_url = %s', video_url)
     conn.commit()
     close_connection(conn, cur)
@@ -174,7 +173,7 @@ def update_video_view():
 def return_upvotes():
     try:
         print("test")
-        test1=requests.get("video_url")
+        test1 = requests.get("video_url")
         print(test1)
         (conn, cur) = establish_connection()
         cur.execute("SELECT upvote_counter FROM jeet.videos WHERE video_url = %s", test1)
@@ -187,21 +186,20 @@ def return_upvotes():
         # Handle the error as per your requirement
         error_message = f"An error occurred: {error}"
         return jsonify(message=error_message), 500
-    
-    
 
 
 @app.route('/update_video_upvote', methods=['POST'])
 def update_video_upvote():
     (conn, cur) = establish_connection()
     data = request.get_json()
-    video_name=data['videoName']
+    video_name = data['videoName']
     cur.execute('UPDATE jeet.videos SET upvote_counter = upvote_counter + 1 WHERE video_name = %s', video_name)
     conn.commit()
     close_connection(conn, cur)
     return jsonify(message='Sucessfully upvoted', id=video_name), 200
 
-@app.route('/get_filtered_videos',methods=['POST'])
+
+@app.route('/get_filtered_videos', methods=['POST'])
 def get_filtered_videos():
     (conn, cur) = establish_connection()
     data = request.get_json()
@@ -228,15 +226,15 @@ def get_all_users():
         conn.commit()
         close_connection(conn, cur)
         return jsonify(result)
-    
+
     except psycopg2.Error as error:
         # Handle the error as per your requirement
         error_message = f"Error executing SQL statement: {error}"
         return jsonify(message=error_message), 500
 
-#final changes have been made
-=======
-@app.route('/display_filters',methods=['POST'])
+
+# final changes have been made
+@app.route('/display_filters', methods=['POST'])
 def filter_search():
     (conn, cur) = establish_connection()
     data = request.get_json()
@@ -247,7 +245,7 @@ def filter_search():
     return jsonify(message=result), 200
 
 
-@app.route('/admin_login',methods=['POST'])
+@app.route('/admin_login', methods=['POST'])
 def admin_login():
     data = request.get_json()
     first_name = data['first_name']
@@ -260,19 +258,14 @@ def admin_login():
         message = 'Login Successful'
     return jsonify(message=message, id=user_email), 200
 
-@app.route('/admin_page',methods=['GET'])
+
+@app.route('/admin_page', methods=['GET'])
 def admin_page():
     (conn, cur) = establish_connection()
     cur.execute("select * from jeet.videos where ")
     result = cur.fetchall()
     return jsonify(message=result), 200
 
-@app.route('/get_videos',methods=['GET'])
-def filter_search():
-    (conn, cur) = establish_connection()
-    cur.execute("select * from jeet.videos")
-    result = cur.fetchall()
-    return jsonify(message=result), 200
 
 if __name__ == "__main__":
     app.run(debug=True)
