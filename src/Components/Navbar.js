@@ -11,6 +11,10 @@ export default function Navbar() {
     setIsNavCollapsed(!isNavCollapsed);
   };
   const navigate = useNavigate();
+  const handleLogout = () =>{
+    localStorage.removeItem("authToken");
+    navigate("/login");
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navclass">
@@ -41,11 +45,14 @@ export default function Navbar() {
           >
             <ul className="navbar-nav d-end ml-auto">
             <Link to="/" className="text-black navbar-btn btn-lg">Home</Link>
-              <Link to="/video-list" className="text-black navbar-btn btn-lg">
+              <Link to="video-list" className="text-black navbar-btn btn-lg">
                 Educational Videos
               </Link>
               <Link to="/upload" className="text-black navbar-btn btn-lg">Upload Video</Link>
-              <Link to='/login' className="text-black navbar-btn btn-lg">Login</Link>
+              {(!localStorage.getItem("authToken"))?
+              <Link to="/login" className="text-black navbar-btn btn-lg">Login</Link>
+              :
+              <Link to="/login" className="text-black navbar-btn btn-lg" onClick={handleLogout}>Logout</Link>}
 
             </ul>
           </div>

@@ -12,13 +12,13 @@ import ImpactCounter from '../Components/Impact';
 export default function Home() {
   return (
     <div>
-      {/* <Navbar /> */}
+      
       <Header />
       <Volunteer />
       <Areas />
       <ImpactCounter targetValue={10000} />
       <CustomCarousel />
-      <Footer />
+      
     </div>
   );
 }
